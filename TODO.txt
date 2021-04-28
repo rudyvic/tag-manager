@@ -1,0 +1,31 @@
+********
+FEATURES
+********
+_ read from .txt, .xml
+_ write to .txt, .xml
+
+
+********
+GRAPHIC
+********
+_ modern graphic style
+
+
+********
+UI
+********
+_ buttons in the bottom bar
+
+
+********
+OTHER
+********
+_ upload on GitHub
+_ spread on Twitter, Reddit
+_ do bootsplash screen
+
+
+********
+BUGS
+********
+_ custom color properties for the lineedit

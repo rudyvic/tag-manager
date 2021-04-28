@@ -1,0 +1,134 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://MainNode.gd" type="Script" id=1]
+[ext_resource path="res://TextEdit.gd" type="Script" id=2]
+[ext_resource path="res://ui_main_theme.tres" type="Theme" id=3]
+
+[node name="MainNode" type="CanvasLayer"]
+script = ExtResource( 1 )
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+anchor_right = 1.0
+anchor_bottom = 1.0
+margin_left = 5.0
+margin_top = 5.0
+margin_right = -5.0
+margin_bottom = -10.0
+custom_constants/separation = 10
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="TextEdit" type="TextEdit" parent="VBoxContainer"]
+margin_right = 1014.0
+margin_bottom = 545.0
+size_flags_horizontal = 3
+size_flags_vertical = 3
+syntax_highlighting = true
+smooth_scrolling = true
+wrap_enabled = true
+caret_blink = true
+script = ExtResource( 2 )
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+margin_top = 555.0
+margin_right = 1014.0
+margin_bottom = 585.0
+rect_min_size = Vector2( 0, 30 )
+theme = ExtResource( 3 )
+custom_constants/separation = 20
+alignment = 1
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnRemoveTag" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 277.0
+margin_right = 377.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+theme = ExtResource( 3 )
+disabled = true
+enabled_focus_mode = 0
+text = "Remove Tag"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnSave" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 397.0
+margin_right = 497.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+theme = ExtResource( 3 )
+disabled = true
+enabled_focus_mode = 0
+text = "Save"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnSaveAs" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 517.0
+margin_right = 617.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+focus_mode = 0
+theme = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "Save as"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="btnLoad" type="Button" parent="VBoxContainer/HBoxContainer"]
+margin_left = 637.0
+margin_right = 737.0
+margin_bottom = 30.0
+rect_min_size = Vector2( 100, 0 )
+focus_mode = 0
+theme = ExtResource( 3 )
+enabled_focus_mode = 0
+text = "Load"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+
+[node name="FileDialogSave" type="FileDialog" parent="."]
+margin_left = 246.84
+margin_top = 87.8801
+margin_right = 795.84
+margin_bottom = 444.88
+popup_exclusive = true
+access = 2
+filters = PoolStringArray( "*.txt" )
+current_dir = "/home/rudyvic/Documents/GodotGames/TagManager"
+current_path = "/home/rudyvic/Documents/GodotGames/TagManager/"
+
+[node name="FileDialogLoad" type="FileDialog" parent="."]
+margin_left = 162.837
+margin_top = 98.219
+margin_right = 835.837
+margin_bottom = 501.219
+popup_exclusive = true
+window_title = "Open a File"
+mode = 0
+access = 2
+filters = PoolStringArray( "*.txt" )
+current_dir = "/home/rudyvic/Documents/GodotGames/TagManager"
+current_path = "/home/rudyvic/Documents/GodotGames/TagManager/"
+__meta__ = {
+"_edit_use_anchors_": false
+}
+[connection signal="cursor_changed" from="VBoxContainer/TextEdit" to="." method="_on_TextEdit_cursor_changed"]
+[connection signal="cursor_changed" from="VBoxContainer/TextEdit" to="VBoxContainer/TextEdit" method="_on_TextEdit_cursor_changed"]
+[connection signal="text_changed" from="VBoxContainer/TextEdit" to="VBoxContainer/TextEdit" method="_on_TextEdit_text_changed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/btnRemoveTag" to="." method="_on_btnRemoveTag_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/btnSave" to="." method="_on_btnSave_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/btnSaveAs" to="." method="_on_btnSaveAs_pressed"]
+[connection signal="pressed" from="VBoxContainer/HBoxContainer/btnLoad" to="." method="_on_btnLoad_pressed"]
+[connection signal="file_selected" from="FileDialogSave" to="." method="_on_FileDialogSave_file_selected"]
+[connection signal="file_selected" from="FileDialogLoad" to="." method="_on_FileDialogLoad_file_selected"]
